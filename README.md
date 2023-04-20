@@ -46,25 +46,25 @@ d. Meng-import menu.dart pada main.dart
 12. Menamabahkan widget Column untuk menampilkan children secara vertikal
 #### Build/Scaffold/SingleChildScrollView/Padding/Column
 13. Membuat children untuk menampilkan judul "Selamat Datang!"
-⋅⋅⋅a. Menambahkan widget Padding untuk menambahkan padding pada body sebesar 10 pixel pada sisi atas dan bawah.⋅⋅
-⋅⋅⋅b. Menambahkan widget Text untuk menampilkan rangkaian teks "Selamat Datang!", dan mengatur text align-nya ke tengah, font sebesar 30 yang di-bold.⋅⋅
+- Menambahkan widget Padding untuk menambahkan padding pada body sebesar 10 pixel pada sisi atas dan bawah
+- Menambahkan widget Text untuk menampilkan rangkaian teks "Selamat Datang!", dan mengatur text align-nya ke tengah, font sebesar 30 yang di-bold
 14. Menambahkan widget GridView.count untuk membuat grid widget turunan dan mengatur scroll enabler, padding, crossAxisSpacing, mainAxisSpacing, crossAxisCount, dan shrinkWrap
 #### Build/Scaffold/SingleChildScrollView/Padding/Column/GridView.count
 15. Membuat children untuk tombol "Melihat Study Tracker"
-⋅⋅⋅a. Mengatur warna tombol menjadi biru.⋅⋅
-⋅⋅⋅b. Menambahkan widget InkWell yang menyediakan area yang dapat diklik di layar dan dapat merespons touch event.⋅⋅
-⋅⋅⋅c. Pada widget InkWell, menambahkan SnackBar "Kamu telah menekan tombol Lihat study Tracker!" saat tombol ditekan.⋅⋅
-⋅⋅⋅d. Menambahkan widget Container untuk menyimpan Icon dan Text.⋅⋅
+- Mengatur warna tombol menjadi biru
+- Menambahkan widget InkWell yang menyediakan area yang dapat diklik di layar dan dapat merespons touch event
+- Pada widget InkWell, menambahkan SnackBar "Kamu telah menekan tombol Lihat study Tracker!" saat tombol ditekan
+- Menambahkan widget Container untuk menyimpan Icon dan Text
 16. Membuat children untuk tombol "Tambah Tugas"
-⋅⋅⋅a. Mengatur warna tombol menjadi hijau.⋅⋅
-⋅⋅⋅b. Menambahkan widget InkWell yang menyediakan area yang dapat diklik di layar dan dapat merespons touch event.⋅⋅
-⋅⋅⋅c. Pada widget InkWell, menambahkan SnackBar Kamu telah menekan tombol Tambah Tugas!" saat tombol ditekan.⋅⋅
-⋅⋅⋅d. Menambahkan widget Container untuk menyimpan Icon dan Text.⋅⋅
+- Mengatur warna tombol menjadi hijau
+- Menambahkan widget InkWell yang menyediakan area yang dapat diklik di layar dan dapat merespons touch event
+- Pada widget InkWell, menambahkan SnackBar Kamu telah menekan tombol Tambah Tugas!" saat tombol ditekan
+- Menambahkan widget Container untuk menyimpan Icon dan Text
 17. Membuat children untuk tombol "Logout"
-⋅⋅⋅a. Mengatur warna tombol menjadi merah.⋅⋅
-⋅⋅⋅b. Menambahkan widget InkWell yang menyediakan area yang dapat diklik di layar dan dapat merespons touch event.⋅⋅
-⋅⋅⋅c. Pada widget InkWell, menambahkan SnackBar "Kamu telah menekan tombol Logout!" saat tombol ditekan.⋅⋅
-⋅⋅⋅d. Menambahkan widget Container untuk menyimpan Icon dan Text.⋅⋅
+- Mengatur warna tombol menjadi merah
+- Menambahkan widget InkWell yang menyediakan area yang dapat diklik di layar dan dapat merespons touch event
+- Pada widget InkWell, menambahkan SnackBar "Kamu telah menekan tombol Logout!" saat tombol ditekan
+- Menambahkan widget Container untuk menyimpan Icon dan Text
 
 # pbp_flutter_tutorial
 
