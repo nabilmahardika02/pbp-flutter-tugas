@@ -15,9 +15,9 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Set title aplikasi menjadi Money Tracker
+        // Set title aplikasi menjadi Study Tracker
         title: const Text( 
-          'Money Tracker',
+          'Study Tracker',
         ),
       ),
       body: SingleChildScrollView( // Widget wrapper yang dapat discroll
@@ -47,14 +47,14 @@ class MyHomePage extends StatelessWidget {
                 shrinkWrap: true,
                 children: <Widget>[
                   Material(
-                    color: Colors.green,
+                    color: Colors.blue,
                     child: InkWell( // Area responsive terhadap sentuhan
                       onTap: () {
                         // Memunculkan SnackBar ketika diklik
                         ScaffoldMessenger.of(context)
                         ..hideCurrentSnackBar()
                         ..showSnackBar(const SnackBar(
-                          content: Text("Kamu telah menekan tombol Lihat Riwayat Transaksi!")));
+                          content: Text("Kamu telah menekan tombol Lihat study Tracker!")));
                       },
                       child: Container( // Container untuk menyimpan Icon dan Text
                         padding: const EdgeInsets.all(8),
@@ -69,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                               ),
                               Padding(padding: EdgeInsets.all(3)),
                               Text(
-                                "Lihat Riwayat Transaksi",
+                                "Lihat Study Tracker",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(color: Colors.white),
                               ),
@@ -86,7 +86,7 @@ class MyHomePage extends StatelessWidget {
                         ScaffoldMessenger.of(context)
                         ..hideCurrentSnackBar()
                         ..showSnackBar(const SnackBar(
-                          content: Text("Kamu telah menekan tombol Tambah Transaksi!")));
+                          content: Text("Kamu telah menekan tombol Tambah Tugas!")));
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8),
@@ -101,7 +101,7 @@ class MyHomePage extends StatelessWidget {
                               ),
                               Padding(padding: EdgeInsets.all(1)),
                               Text(
-                                "Tambah Transaksi",
+                                "Tambah Tugas",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(color: Colors.white),
                               ),
@@ -112,7 +112,7 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ),
                   Material(
-                    color: Colors.green,
+                    color: Colors.red,
                     child: InkWell(
                       onTap: () {
                         ScaffoldMessenger.of(context)
