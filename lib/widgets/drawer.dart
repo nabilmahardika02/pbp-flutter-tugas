@@ -1,6 +1,8 @@
+import 'package:pbp_flutter_tutorial/pages/assignment.dart';
 import 'package:pbp_flutter_tutorial/pages/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_flutter_tutorial/pages/form.dart';
+
 
 class DrawerMenu extends StatelessWidget {
 
@@ -19,6 +21,16 @@ class DrawerMenu extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => const MyHomePage()),
               );
+            },
+          ),
+          ListTile(
+            title: const Text('Riwayat Transaksi'),
+            onTap: () {
+                // Route menu ke halaman transaksi
+                Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const AssignmentPage()),
+                );
             },
           ),         
         ],

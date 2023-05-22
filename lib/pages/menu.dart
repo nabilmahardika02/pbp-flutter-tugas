@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:pbp_flutter_tutorial/pages/assignment.dart';
+import 'package:pbp_flutter_tutorial/pages/login.dart';
 import 'package:pbp_flutter_tutorial/widgets/drawer.dart';
 import 'package:pbp_flutter_tutorial/pages/form.dart';
+import 'package:provider/provider.dart';
 
 
 class MyHomePage extends StatelessWidget {
@@ -16,6 +20,7 @@ class MyHomePage extends StatelessWidget {
   // always marked "final".
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         // Set title aplikasi menjadi Study Tracker
@@ -54,11 +59,11 @@ class MyHomePage extends StatelessWidget {
                     color: Colors.blue,
                     child: InkWell( // Area responsive terhadap sentuhan
                       onTap: () {
-                        // Memunculkan SnackBar ketika diklik
-                        ScaffoldMessenger.of(context)
-                        ..hideCurrentSnackBar()
-                        ..showSnackBar(const SnackBar(
-                          content: Text("Kamu telah menekan tombol Lihat study Tracker!")));
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AssignmentPage()),
+                        );
                       },
                       child: Container( // Container untuk menyimpan Icon dan Text
                         padding: const EdgeInsets.all(8),
@@ -73,7 +78,7 @@ class MyHomePage extends StatelessWidget {
                               ),
                               Padding(padding: EdgeInsets.all(3)),
                               Text(
-                                "Lihat Study Tracker",
+                                "Lihat Tugas",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(color: Colors.white),
                               ),
@@ -119,11 +124,25 @@ class MyHomePage extends StatelessWidget {
                   Material(
                     color: Colors.red,
                     child: InkWell(
-                      onTap: () {
-                        ScaffoldMessenger.of(context)
-                        ..hideCurrentSnackBar()
-                        ..showSnackBar(const SnackBar(
-                          content: Text("Kamu telah menekan tombol Logout!")));
+                      onTap: () async {
+                        final response = await request.logout(
+                          // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                          "https://webbed-energy-zoa.domcloud.io/auth/logout/");
+                          String message = response["message"];
+                          if (response['status']) {
+                              String uname = response["username"];
+                              ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                                  content: Text("$message Sampai jumpa, $uname."),
+                              ));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                              );
+                          } else {
+                              ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                              content: Text("$message"),
+                          ));
+                      }
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8),
