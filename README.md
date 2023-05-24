@@ -11,9 +11,9 @@ Jadi, meskipun memungkinkan untuk mengambil data JSON tanpa membuat model terleb
 
 ### Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
 1. Membuat fungsi (cth: fetchAssignment()) yang mengembalikan Future pada FutureBuilder, yang akan digunakan untuk mengambil data secara asinkronus
-    Pengambilan data JSON: Menggunakan library http untuk melakukan permintaan HTTP ke endpoint API yang menyediakan data dalam format JSON.
-&nbsp; Pemrosesan respons: Setelah mendapatkan respons dari API, pemrosesan dilakukan. pemrosesan respons dilakukan dengan cara melakukan decode response menjadi bentuk json.
-&nbsp; Konversi ke object model: melakukan konversi data json menjadi object Assignment dengan menambahkan item di decode data ke List<Assignment> listAssignment
+    * Pengambilan data JSON: Menggunakan library http untuk melakukan permintaan HTTP ke endpoint API yang menyediakan data dalam format JSON.
+    * Pemrosesan respons: Setelah mendapatkan respons dari API, pemrosesan dilakukan. pemrosesan respons dilakukan dengan cara melakukan decode response menjadi bentuk json.
+    * Konversi ke object model: melakukan konversi data json menjadi object Assignment dengan menambahkan item di decode data ke List<Assignment> listAssignment
 2. Menggunakan FutureBuilder di dalam widget tree, dan memberikan fungsi fetchAssignment() yang mengembalikan Future sebagai parameter future.
 3. Di dalam builder callback, enggunakan snapshot untuk mengakses status koneksi, data yang diperoleh, atau pesan kesalahan jika terjadi.
 4. Menampilkan data yang diinginkan
