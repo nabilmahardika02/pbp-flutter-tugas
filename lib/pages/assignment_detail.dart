@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:pbp_flutter_tutorial/model/assignment_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:pbp_flutter_tutorial/pages/assignment.dart';
 import 'package:pbp_flutter_tutorial/widgets/drawer.dart';
 
 class DetailPage extends StatefulWidget {
@@ -170,6 +171,15 @@ class _DetailPageState extends State<DetailPage> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 24.0),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => const AssignmentPage()),
+                            );
+                          }, child: const Text('Kembali'),
+                        )
                       ]
                     ),
                   )
