@@ -1,3 +1,112 @@
+## TUGAS 9
+### Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Ya, dalam Flutter, kita dapat melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Flutter menyediakan library yang kuat seperti http untuk mengambil data dari API dan mendekode JSON menjadi objek Flutter.
+Dalam pendekatan ini, kita tidak perlu membuat model terlebih dahulu untuk mengurai JSON menjadi objek yang ditentukan. Melalui pendekatan lain, kita dapat menggunakan tipe data dinamis seperti Map<String, dynamic> untuk mewakili struktur JSON yang diambil.
+Namun, ada beberapa hal yang perlu dipertimbangkan saat memutuskan apakah menggunakan pendekatan tanpa model atau membuat model terlebih dahulu:
+1. Ketidakpastian tipe data: Dalam pendekatan tanpa model, tipe data dianggap dinamis (dynamic), yang berarti kita kehilangan manfaat dari tipe data statis yang dapat memberikan keamanan tambahan dan dukungan pemeriksaan kesalahan saat mengakses data.
+2. Kesalahan penamaan: Jika kita mengakses data menggunakan indeks atau kunci yang tidak valid, tidak ada pemeriksaan kesalahan saat kompilasi. Ini dapat menyebabkan kesalahan runtime yang sulit dilacak.
+3. Kekurangan pemahaman struktur data: Tanpa model yang terdefinisi dengan jelas, sulit untuk memahami struktur data yang diharapkan tanpa melihat langsung kode. Model dapat berfungsi sebagai dokumentasi dan memfasilitasi kerja sama tim dalam memahami dan menggunakan data yang diambil.
+
+Jadi, meskipun memungkinkan untuk mengambil data JSON tanpa membuat model terlebih dahulu, dalam beberapa kasus lebih baik mempertimbangkan pendekatan dengan membuat model terlebih dahulu untuk menghasilkan kode yang lebih aman, lebih terdokumentasi, dan lebih mudah dipahami. 
+
+### Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+1. Membuat fungsi (cth: fetchAssignment()) yang mengembalikan Future pada FutureBuilder, yang akan digunakan untuk mengambil data secara asinkronus
+&nbsp; Pengambilan data JSON: Menggunakan library http untuk melakukan permintaan HTTP ke endpoint API yang menyediakan data dalam format JSON.
+&nbsp; Pemrosesan respons: Setelah mendapatkan respons dari API, pemrosesan dilakukan. pemrosesan respons dilakukan dengan cara melakukan decode response menjadi bentuk json.
+&nbsp; Konversi ke object model: melakukan konversi data json menjadi object Assignment dengan menambahkan item di decode data ke List<Assignment> listAssignment
+2. Menggunakan FutureBuilder di dalam widget tree, dan memberikan fungsi fetchAssignment() yang mengembalikan Future sebagai parameter future.
+3. Di dalam builder callback, enggunakan snapshot untuk mengakses status koneksi, data yang diperoleh, atau pesan kesalahan jika terjadi.
+4. Menampilkan data yang diinginkan
+
+### Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+1. Input data akun pada Flutter: Di aplikasi Flutter, user akan meng-input informasi akun menggunakan widget TextField berupa username dan password
+2. Permintaan otentikasi ke Django: Setelah user memasukkan informasi akun, Flutter App perlu mengirim permintaan otentikasi ke Django menggunakan library http untuk melakukan permintaan HTTP POST ke endpoint otentikasi yang disediakan pada Django.
+3. Verifikasi autentikasi oleh Django: Di sisi server, Django akan memproses permintaan otentikasi dan memverifikasi kecocokan antara informasi akun yang diberikan dengan yang ada di sistem. Django akan memeriksa kebenaran informasi akun dan mengembalikan respons yang sesuai.
+4. Tanggapan otentikasi ke Flutter: Setelah Django memproses permintaan otentikasi, Django akan mengirimkan tanggapan ke aplikasi Flutter. Flutter App akan memeriksa status tanggapan untuk menentukan apakah autentikasi berhasil atau gagal. Jika autentikasi berhasil, Flutter App dapat menyimpan token otentikasi yang diberikan oleh Django untuk digunakan pada permintaan berikutnya.
+5. Tampilan menu pada Flutter: Jika autentikasi berhasil, Flutter App akan menampilkan menu pada aplikasi Flutter.
+
+### Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+- Provider: Widget ini digunakan untuk mengatur state manajemen dengan menggunakan konsep Provider dari Flutter. Biasanya digunakan untuk mengelola state aplikasi secara global.
+- MaterialApp: Widget ini digunakan untuk membuat aplikasi Flutter dengan menggunakan desain material. Ini menyediakan banyak fitur dan pengaturan yang terkait dengan aplikasi, seperti judul, tema, dan halaman beranda.
+- Scaffold: Widget ini digunakan untuk membuat kerangka dasar aplikasi, yang mencakup struktur tampilan dasar seperti AppBar dan body.
+- AppBar: Widget ini digunakan untuk menampilkan bilah aplikasi di bagian atas. 
+- Container: Widget ini digunakan untuk membuat wadah yang dapat mengandung widget lain.
+- Column: Widget ini digunakan untuk menampilkan widget secara vertikal dalam satu kolom.
+- TextField: Widget ini digunakan untuk membuat input teks yang dapat diisi oleh pengguna.
+- SizedBox: Widget ini digunakan untuk memberikan jarak kosong vertikal antara widget. 
+- ElevatedButton: Widget ini digunakan untuk membuat tombol yang menimbulkan efek naik ketika ditekan. 
+- SnackBar: Widget ini digunakan untuk menampilkan pesan sementara yang muncul di bagian bawah layar. 
+- AlertDialog: Widget ini digunakan untuk menampilkan dialog dengan judul dan konten. 
+- Drawer: Widget ini digunakan untuk membuat menu geser yang muncul dari sisi aplikasi. 
+- FutureBuilder: Widget ini digunakan untuk membangun UI berdasarkan hasil masa depan (future).
+- Center: Widget ini digunakan untuk menengahkan widget-child secara horizontal dan vertikal. 
+- Text: Widget ini digunakan untuk menampilkan teks. 
+- ListView.builder: Widget ini digunakan untuk membuat daftar scrollable yang mengandung banyak item dengan menggunakan pembangun (builder).
+- ListTile: Widget ini digunakan untuk membuat item dalam daftar dengan judul dan opsi lainnya.
+- MaterialPageRoute: Widget ini digunakan untuk mendefinisikan rute atau halaman baru dalam aplikasi.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+#### Migrasi proyek tugas Django kamu ke salah satu PaaS alternatif.
+1. Membuka situs web DOM Cloud Hosting
+2. Melakukan login dan menekan tombol Add a website
+3. Memilih untuk mengimpor repositori GitHub yang sudah ada (Clone from GitHub)
+4. Memilih repositori aplikasi Tugas2_dua.
+5. Mengkonfigurasi deployment untuk aplikasi Django yang menginisiasi layanan PostgreSQL dan sertifikat SSL untuk layanan HTTPS 
+6. Menekan tombol Add Website untuk memulai proses deployment. DOM Cloud Hosting akan melakukan proses deployment secara otomatis sesuai dengan konfigurasi yang telah kita buat.
+#### Mengintegrasikan sistem autentikasi pada Django 
+7. Membuat django-app bernama authentication
+8. Menambahkan authentication ke INSTALLED_APPS pada django_tutorial/settings.py.
+9. Menjalankan perintah pip install django-cors-headers untuk menginstal library yang dibutuhkan.
+10. Menjalankan perintah pip freeze > requirements.txt
+11. Menambahkan corsheaders ke INSTALLED_APPS pada django_tutorial/settings.py aplikasi.
+12. Menambahkan corsheaders.middleware.CorsMiddleware ke MIDDLEWARE pada django_tutorial/settings.py aplikasi.
+13. Membuat variabel baru di django_tutorial/settings.py dengan nama CORS_ALLOW_ALL_ORIGINS, CORS_ALLOW_CREDENTIALS, CSRF_COOKIE_SECURE, dan SESSION_COOKIE_SECURE dan berikan nilai True untuk tiap variabel
+14. Membuat variabel baru di django_tutorial/settings.py dengan nama CSRF_COOKIE_SAMESITE dan SESSION_COOKIE_SAMESITE dan berikan nilai 'None' untuk tiap variabel
+15. Buatlah sebuah metode view untuk login pada authentication/views.py. yang menerima permintaan POST username dan password dan mengautentikasi permintaan tersebut. Hasil autentikasi nantinya akan di-return dalam bentuk json
+16. Membuat file urls.py pada folder authentication dan menambahkan routing login
+17. Menambahkan path('auth/', include('authentication.urls')), pada file django_tutorial/urls.py.
+18. Melakukan re-deployment proyek django
+
+#### Mengintegrasikan sistem autentikasi pada Flutter
+18. Menginstal package pbp_django_auth dan provider pada flutter
+19. memodifikasi root widget untuk menyediakan CookieRequest library ke semua child widgets dengan menggunakan Provider
+20. Mengubah home pada widget MaterialApp menjadi LoginPage()
+21. Membuat file baru pada folder pages dengan nama login.dart.
+22. Mengimpor library Provider dan package pbp_django_auth ke komponen pada main.dart dan pages/login.dart
+23. Mengimpor library material.dart dan menu.dart ke komponen pada pages/login.dart
+24. Membuat LoginPage yang menerima input username dan password (dengan TextField), mengecek kredensial input tersebut, dan mengarahkan user ke homepage jika login berhasil
+
+#### Membuat model kustom sesuai dengan proyek aplikasi Django.
+25. Membuka https://webbed-energy-zoa.domcloud.io/tracker/json/
+26. Menyalin data JSON yang tersedia dan membuka situs web Quicktype.
+27. Pada situs web Quicktype, mengubah setup name menjadi Assignment, source type menjadi JSON, dan language menjadi Dart
+28. Mem-paste data JSON yang telah disalin sebelumnya ke dalam textbox yang tersedia pada Quicktype.
+29. Meng-klik pilihan Copy Code pada Quicktype.
+30. Buatlah file baru pada folder lib/model dengan nama assignment_detail.dart
+31. Mem-paste kode yang telah disalin sebelumnya ke file assignment_detail.dart
+
+#### Membuat halaman yang berisi semua tugas yang ada pada endpoint JSON di Django
+32. Melakukan flutter pub add http pada terminal proyek Flutter untuk menambahkan package http.
+33. Pada file android/app/src/main/AndroidManifest.xml, menambahkan kode <uses-permission android:name="android.permission.INTERNET" /> di bahwah <application> untuk memperbolehkan akses Internet pada aplikasi Flutter yang sedang dibuat.
+34. Membuat file baru pada folder lib/pages dengan nama assignment.dart
+35. Pada file transaction.dart, mengimpor library http dan convert, dan mengimpor model assignment_model.dart dan drawer.dart
+36. Membuat AssignmentPage yang dapat membangun UI berdasarkan hasil (data) kedepannya dan membuat list scrollable yang mengandung banyak item dari data dengan menggunakan builder
+37. Menambahkan AssignmentPage ke widget/drawer.dart
+38. Mengubah fungsi tombol Riwayat Tugas pada lib/pages/menu.dart agar mengarahkan ke halaman AssignmentPage
+39. Mengimpor assignment.dart ke drawer.dart
+40. Mengimpor library pbp_django_auth dan provider ke menu.dart, dan mengimpor assignment.dart dan login.dart ke menu.dart
+
+#### Membuat halaman detail untuk setiap tugas yang ada pada daftar tersebut.
+41. Membuat file baru pada folder lib/pages dengan nama assignment_detail.dart
+42. Mengimpor library material.dart, convert dan http ke assignment_detail.dart
+43. Mengimpor assignment_model.dart, assignment.dart, dan drawer.dart
+44. Membuat DetailPage yang memiliki parameter pk, yang akan digunakan untuk mengakses data json sesuai dengan pk-nya (id)
+45. Membangun DetailPage yang dapat membangun UI berdasarkan hasil (data) kedepannya dan membuat list scrollable yang mengandung banyak item dari data dengan menggunakan builder. Data yang ditampilkan adalah 'name', 'subject', 'date', 'progress', dan 'description'
+46. Pada assignment.dart, menambahkan widget InkWell dengan properti onTap pada saat ListView dibangun, yang akan mengarahkan pada DetailPage dengan parameter pk (id) dari data dengan index yang diambil
+
+#### Menambahkan tombol untuk kembali ke daftar tugas.
+47. Pada DetailPage, menambahkan widget ElevatedButton dengan properti onPressed yang akan mengarahkan ke AssignmentPage saat tombol ditekan
+
 ## TUGAS 8
 ### Jelaskan bagaimana cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.
 1. Menambahkan Halaman Baru: Saat Anda ingin menampilkan halaman baru, Anda menggunakan metode push pada Navigator. Halaman baru ditambahkan ke tumpukan halaman Navigator, dan halaman sebelumnya tetap ada di bawahnya.
