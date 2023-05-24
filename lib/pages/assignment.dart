@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:pbp_flutter_tutorial/model/assignment_model.dart';
+import 'package:pbp_flutter_tutorial/pages/assignment_detail.dart';
 
 import '../widgets/drawer.dart';
 
@@ -42,7 +43,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Assignment'),
+        title: const Text('Tugas'),
       ),
       drawer: const DrawerMenu(),
       body: FutureBuilder(
@@ -65,37 +66,46 @@ class _AssignmentPageState extends State<AssignmentPage> {
             } else {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
-                itemBuilder: (_, index) => Container(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 16, vertical: 12),
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15.0),
-                    boxShadow: [
-                     BoxShadow(
-                      color:
-                        snapshot.data![index].fields.progress > 50
-                          ?Colors.blueAccent
-                          : Colors.red,
-                      blurRadius: 2.0)
-                    ]
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${snapshot.data![index].fields.name}",
-                        style: const TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                itemBuilder: (_, index) => InkWell(
+                  onTap: () {
+                    Navigator.pushReplacement(context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPage(pk: snapshot.data![index].pk),
                       ),
-                      const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.subject}"),
-                    ],
-                  ),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 12),
+                    padding: const EdgeInsets.all(20.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15.0),
+                      boxShadow: [
+                      BoxShadow(
+                        color:
+                          snapshot.data![index].fields.progress > 50
+                            ?Colors.blueAccent
+                            : Colors.red,
+                        blurRadius: 2.0)
+                      ]
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${snapshot.data![index].fields.name}",
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text("${snapshot.data![index].fields.subject}"),
+                      ],
+                    ),
+                  )
                 )
               );
             }
