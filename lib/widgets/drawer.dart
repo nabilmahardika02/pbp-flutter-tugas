@@ -24,7 +24,7 @@ class DrawerMenu extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Riwayat Transaksi'),
+            title: const Text('Riwayat Tugas'),
             onTap: () {
                 // Route menu ke halaman transaksi
                 Navigator.pushReplacement(
@@ -32,7 +32,17 @@ class DrawerMenu extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const AssignmentPage()),
                 );
             },
-          ),         
+          ), 
+          ListTile(
+            title: const Text('Tambah Tugas'),
+            onTap: () {
+                // Route menu ke halaman transaksi
+                Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const MyFormPage()),
+                );
+            },
+          ),          
         ],
       ),
     );
