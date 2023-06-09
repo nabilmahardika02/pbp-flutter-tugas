@@ -1,3 +1,5 @@
+import 'package:flutter/gestures.dart';
+import 'package:pbp_flutter_tutorial/pages/register.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:pbp_flutter_tutorial/pages/menu.dart';
@@ -99,6 +101,32 @@ class _LoginPageState extends State<LoginPage> {
                                 }
                             },
                             child: const Text('Login'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "Belum punya akun? ",
+                                    style:  TextStyle(color: Colors.black),
+                                  ),
+                                  TextSpan(
+                                    text: "Registrasi",
+                                    style: TextStyle(color: Colors.blue),
+                                    recognizer: TapGestureRecognizer() 
+                                      ..onTap = () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => const RegisterApp()),
+                                        );
+                                      }
+                                  )
+                                ]
+                              )
+                            ),
+                          ),
                         ),
                     ],
                 ),
