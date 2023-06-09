@@ -80,7 +80,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                     padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       boxShadow: [
                       BoxShadow(
                         color:
